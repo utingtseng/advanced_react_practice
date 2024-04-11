@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
+// moment is included each time the page is loaded
+// import moment from 'moment';
 
 import './styles.css';
 
@@ -9,6 +10,9 @@ export const Exercise5 = () => {
   const [value, setValue] = useState('N/A');
 
   async function onClick() {
+    // dynamic import
+    const momentModule = await import('moment');
+    const moment = momentModule.default; // Access the default export
     const reservationDateAndTime = moment('2022-04-26T23:30:00.000Z').format(
       'MM/D/YYYY h:mmA'
     );

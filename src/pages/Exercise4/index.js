@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
 import { GraphPoint } from './GraphPoint';
@@ -7,9 +7,12 @@ import './styles.css';
 export const Exercise4 = () => {
   const [showExplainer, setShowExplainer] = useState(false);
 
-  function setGraphPointOn() {
+  // This is passes as a prop and react considers this funciton as different each time
+  // Just the funciton makes it a different reference each time
+  // useCallback is not recreated each time instead the same reference is used
+  const setGraphPointOn = useCallback(() => {
     return Math.random() > 0.8;
-  }
+  },[])
 
   return (
     <div className='container'>

@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Details from './Details';
-
+// remove big chunk import
+// import Details from './Details';
 import './styles.css';
+
+// make sure componenets that are large are loaded outside of the main bundle
+const Details = React.lazy(() => import('./Details'));
 
 export const Exercise6 = () => {
   return (
